@@ -1,0 +1,29 @@
+package Game;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class MainPanel extends JPanel implements ActionListener{
+	static final int SCREEN_WIDTH = 600;
+    static final int SCREEN_HEIGHT = 600;
+    
+    public MainPanel(){
+    	this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
+        this.setBackground(Color.black);
+        this.setFocusable(true);
+    }
+    
+    @Override
+    public void paint(Graphics g) {
+    	g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 75));
+        FontMetrics metrics2 = getFontMetrics(g.getFont());
+        g.drawString("GAME OVER", (SCREEN_WIDTH - metrics2.stringWidth("GAME OVER"))/2, SCREEN_HEIGHT/2);
+    }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+}

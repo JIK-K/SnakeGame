@@ -1,0 +1,15 @@
+package Game;
+
+public class ViewController {
+	GameFrame gameFrame;
+	MainPanel mainPanel;
+	GamePanel gamePanel;
+	public ViewController(GameFrame gameFrame) {
+		this.gameFrame = gameFrame;
+		init();
+	}
+	
+	private void init() {
+		mainPanel = new MainPanel(this);
+	}
+}
