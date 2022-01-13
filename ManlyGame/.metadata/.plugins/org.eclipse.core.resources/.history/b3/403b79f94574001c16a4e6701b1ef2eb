@@ -1,0 +1,28 @@
+package Game;
+
+import java.awt.*;
+
+import javax.swing.JFrame;
+
+public class GameFrame extends JFrame{
+	static final int SCREEN_WIDTH = 600;
+    static final int SCREEN_HEIGHT = 600;
+	ViewController controller;
+	public GameFrame() {
+		super("snake");
+		//this.setLocation(new Point(600,250));
+		this.setVisible(true);
+		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		this.pack();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		controller = new ViewController(this);
+		 
+//		this.add(new MainPanel());
+//        this.setTitle("Snake");
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        
+       
+    }
+}

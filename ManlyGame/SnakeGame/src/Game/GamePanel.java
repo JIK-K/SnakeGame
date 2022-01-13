@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements ActionListener{
     static final int DELAY = 75;
     final int x[] = new int[GAME_UNITS];
     final int y[] = new int[GAME_UNITS];
-    int bodyParts = 6;
+    int bodyParts = 5;
     int applesEaten;
     int appleX;
     int appleY;
@@ -58,8 +58,8 @@ public class GamePanel extends JPanel implements ActionListener{
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
                 else{
-                    g.setColor(new Color(45, 180, 0)); //일반
-                    //g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //존나화려
+//                    g.setColor(new Color(45, 180, 0)); //일반
+                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //존나화려
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }

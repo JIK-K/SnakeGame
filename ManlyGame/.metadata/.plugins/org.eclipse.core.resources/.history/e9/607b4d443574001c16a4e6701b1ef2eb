@@ -1,0 +1,28 @@
+package Game;
+
+import java.awt.*;
+
+import javax.swing.JFrame;
+
+public class GameFrame extends JFrame{
+	ViewController controller;
+	public GameFrame() {
+		super("snake");
+		//this.setLocation(new Point(600,250));
+		this.setVisible(true);
+		//this.setPreferredSize(new Dimension(600, 600));
+		this.pack();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		controller = new ViewController(this);
+		 
+//		this.add(new MainPanel());
+//        this.setTitle("Snake");
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+//        this.pack();
+//        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        
+       
+    }
+}
