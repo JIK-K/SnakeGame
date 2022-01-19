@@ -19,10 +19,13 @@ public class GamePanel extends JPanel implements ActionListener{
     int appleY;
     char direction = 'R';
     boolean running = false;
+    boolean start = true;
     Timer timer;
     Random random;
+    ViewController controller;
            
-    public GamePanel(){
+    public GamePanel(ViewController controller){
+    	this.controller = controller;
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
         this.setBackground(Color.black);
@@ -34,8 +37,13 @@ public class GamePanel extends JPanel implements ActionListener{
     public void startGame(){
         newApple();
         running = true;
-        timer = new Timer(DELAY, this);
-        timer.start();
+//        timer = new Timer(DELAY, this);
+//        timer.start();
+    }
+    
+    public void startTimer() {
+    	timer = new Timer(DELAY, this);
+    	timer.start();
     }
     
     public void paintComponent(Graphics g){
@@ -58,8 +66,8 @@ public class GamePanel extends JPanel implements ActionListener{
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
                 else{
-//                    g.setColor(new Color(45, 180, 0)); //ÀÏ¹Ý
-                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //Á¸³ªÈ­·Á
+//                    g.setColor(new Color(45, 180, 0)); //ï¿½Ï¹ï¿½
+                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
@@ -68,7 +76,7 @@ public class GamePanel extends JPanel implements ActionListener{
             FontMetrics metrics = getFontMetrics(g.getFont());
             g.drawString("Score : "+applesEaten, (SCREEN_WIDTH - metrics.stringWidth("Score :"+applesEaten))/2, g.getFont().getSize());
         }
-        else{
+        else if(!start){
             gameOver(g);
         }
     }
@@ -112,28 +120,33 @@ public class GamePanel extends JPanel implements ActionListener{
         //checks if head collides with body
         for(int i = bodyParts; i > 0; i--){
             if((x[0] == x[i]) && (y[0] == y[i])){
+            	start = false;
                 running = false;
                 
             }
         }
         //check if head touches left boreder
         if(x[0] < 0){
+        	start = false;
             running = false;
         }
         //check if head touches right boreder
         if(x[0] > SCREEN_WIDTH){
+        	start = false;
             running = false;
         }
         //check if head touches top boreder
         if(y[0] < 0){
+        	start = false;
             running = false;
         }
         //check if head touches bottom boreder
         if(y[0] > SCREEN_HEIGHT){
+        	start = false;
             running = false;
         }
         
-        if(!running){
+        if(!(running && start)){
             timer.stop();
         }
     }
@@ -149,6 +162,10 @@ public class GamePanel extends JPanel implements ActionListener{
         g.setFont(new Font("Ink Free", Font.BOLD, 75));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("GAME OVER", (SCREEN_WIDTH - metrics2.stringWidth("GAME OVER"))/2, SCREEN_HEIGHT/2);
+    }
+    
+    public void changeRankPanel() {
+    	controller.showRankPanel();
     }
     
     @Override
@@ -186,6 +203,12 @@ public class GamePanel extends JPanel implements ActionListener{
                         direction = 'D';
                     }
                     break;
+                case KeyEvent.VK_ENTER:
+                	if(!(start && running)) {
+                		changeRankPanel();
+                	}
+                case KeyEvent.VK_SPACE:
+                	startTimer();
             }
         }  
     }

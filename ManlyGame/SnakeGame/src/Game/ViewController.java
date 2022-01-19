@@ -1,17 +1,18 @@
 package Game;
 import java.awt.*;
 public class ViewController {
-	GameFrame gameFrame; //°ÔÀÓ ÇÁ·¹ÀÓ
-	MainPanel mainPanel; //¸ÞÀÎ ÆÐ³Î
-	GamePanel gamePanel; //°ÔÀÓ ÆÐ³Î
+	MainFrame gameFrame; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	MainPanel mainPanel; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½
+	GamePanel gamePanel; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½
 	Container contentPane;
-	public ViewController(GameFrame gameFrame) {
+	public ViewController(MainFrame gameFrame) {
 		this.gameFrame = gameFrame;
 		init();
 	}
 	
 	public void init() {
 		mainPanel = new MainPanel(this);
+		gamePanel = new GamePanel(this);
 		contentPane = gameFrame.getContentPane();
 		contentPane.add(mainPanel);
 		mainPanel.requestFocus();
@@ -19,7 +20,14 @@ public class ViewController {
 	
 	public void showGamePanel() {
 		contentPane.remove(mainPanel);
-		contentPane.add(new GamePanel());
+		contentPane.add(gamePanel);
+		gameFrame.setVisible(false);
+		gameFrame.setVisible(true);
+	}
+	
+	public void showRankPanel() {
+		contentPane.remove(gamePanel);
+		contentPane.add(new RankPanel());
 		gameFrame.setVisible(false);
 		gameFrame.setVisible(true);
 	}

@@ -1,0 +1,6 @@
+package Game;
+
+public class RankPanel {
+	static final int SCREEN_WIDTH = 600;
+	static final int SCREEN_HEIGHT = 600;
+}

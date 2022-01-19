@@ -1,7 +1,0 @@
-package Game;
-
-public class SnakeGame {
-	public static void main(String[] arg) {
-		var frame = new GameFrame();
-	}
-}
