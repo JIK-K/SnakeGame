@@ -53,10 +53,10 @@ public class GamePanel extends JPanel implements ActionListener{
     
     public void draw(Graphics g){
         if(running){
-//            for(int i = 0; i < SCREEN_HEIGHT/UNIT_SIZE; i++){
-//                g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
-//                g.drawLine(0, i*UNIT_SIZE, SCREEN_HEIGHT, i*UNIT_SIZE);
-//            }
+            for(int i = 0; i < SCREEN_HEIGHT/UNIT_SIZE; i++){
+                g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
+                g.drawLine(0, i*UNIT_SIZE, SCREEN_HEIGHT, i*UNIT_SIZE);
+            }
             g.setColor(Color.red);
             g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
 
@@ -66,8 +66,8 @@ public class GamePanel extends JPanel implements ActionListener{
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
                 else{
-//                    g.setColor(new Color(45, 180, 0)); //�Ϲ�
-                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //����ȭ��
+//                    g.setColor(new Color(45, 180, 0)); //basic color
+                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //holymoly color
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
@@ -122,7 +122,6 @@ public class GamePanel extends JPanel implements ActionListener{
             if((x[0] == x[i]) && (y[0] == y[i])){
             	start = false;
                 running = false;
-                
             }
         }
         //check if head touches left boreder
@@ -131,7 +130,7 @@ public class GamePanel extends JPanel implements ActionListener{
             running = false;
         }
         //check if head touches right boreder
-        if(x[0] > SCREEN_WIDTH){
+        if(x[0] >= SCREEN_WIDTH){
         	start = false;
             running = false;
         }
@@ -141,7 +140,7 @@ public class GamePanel extends JPanel implements ActionListener{
             running = false;
         }
         //check if head touches bottom boreder
-        if(y[0] > SCREEN_HEIGHT){
+        if(y[0] >= SCREEN_HEIGHT){
         	start = false;
             running = false;
         }
@@ -162,10 +161,11 @@ public class GamePanel extends JPanel implements ActionListener{
         g.setFont(new Font("Ink Free", Font.BOLD, 75));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("GAME OVER", (SCREEN_WIDTH - metrics2.stringWidth("GAME OVER"))/2, SCREEN_HEIGHT/2);
-    }
-    
-    public void changeRankPanel() {
-    	controller.showRankPanel();
+        //communication message
+        g.setColor(Color.green);
+        g.setFont(new Font("Ink Free", Font.BOLD, 30));
+        FontMetrics metrics3 = getFontMetrics(g.getFont());
+        g.drawString("press 'ENTER' to view Rank", (SCREEN_WIDTH - metrics3.stringWidth("press 'ENTER' to view Rank"))/2, SCREEN_HEIGHT-50);
     }
     
     @Override
@@ -174,7 +174,6 @@ public class GamePanel extends JPanel implements ActionListener{
             move();
             checkApple();
             checkCollisions();
-            
         }
         repaint();
     }
@@ -205,10 +204,12 @@ public class GamePanel extends JPanel implements ActionListener{
                     break;
                 case KeyEvent.VK_ENTER:
                 	if(!(start && running)) {
-                		changeRankPanel();
+                		controller.showRankPanel();
                 	}
-                case KeyEvent.VK_SPACE:
-                	startTimer();
+                	else {
+                		startTimer();
+                	}
+                		
             }
         }  
     }

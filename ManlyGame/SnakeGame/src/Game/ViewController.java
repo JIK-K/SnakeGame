@@ -1,9 +1,10 @@
 package Game;
 import java.awt.*;
 public class ViewController {
-	MainFrame gameFrame; //���� ������
-	MainPanel mainPanel; //���� �г�
-	GamePanel gamePanel; //���� �г�
+	MainFrame gameFrame; 
+	MainPanel mainPanel; 
+	GamePanel gamePanel; 
+	RankPanel rankPanel;
 	Container contentPane;
 	public ViewController(MainFrame gameFrame) {
 		this.gameFrame = gameFrame;
@@ -12,13 +13,22 @@ public class ViewController {
 	
 	public void init() {
 		mainPanel = new MainPanel(this);
-		gamePanel = new GamePanel(this);
+		//gamePanel = new GamePanel(this);
+		//rankPanel = new RankPanel(this);
 		contentPane = gameFrame.getContentPane();
 		contentPane.add(mainPanel);
 		mainPanel.requestFocus();
 	}
+	public void restartGame() {
+		mainPanel = new MainPanel(this);
+		contentPane.removeAll();
+		contentPane.add(mainPanel);
+		gameFrame.setVisible(false);
+		gameFrame.setVisible(true);
+	}
 	
 	public void showGamePanel() {
+		gamePanel = new GamePanel(this);
 		contentPane.remove(mainPanel);
 		contentPane.add(gamePanel);
 		gameFrame.setVisible(false);
@@ -26,8 +36,18 @@ public class ViewController {
 	}
 	
 	public void showRankPanel() {
+		rankPanel = new RankPanel(this);
 		contentPane.remove(gamePanel);
-		contentPane.add(new RankPanel());
+//		contentPane.removeAll();
+		contentPane.add(rankPanel);
+		gameFrame.setVisible(false);
+		gameFrame.setVisible(true);
+	}
+	
+	public void change() {
+		rankPanel = new RankPanel(this);
+		contentPane.remove(mainPanel);
+		contentPane.add(rankPanel);
 		gameFrame.setVisible(false);
 		gameFrame.setVisible(true);
 	}

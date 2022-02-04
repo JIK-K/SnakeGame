@@ -1,6 +1,7 @@
 package Game;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 
@@ -10,11 +11,12 @@ public class RankPanel extends JPanel{
 	ViewController controller;
 	
 	
-	public RankPanel() {
-//		this.controller = controller;
+	public RankPanel(ViewController controller) {
+		this.controller = controller;
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setFocusable(true);
+		this.addKeyListener(new MyKeyListener());
 		
 	}
 	@Override
@@ -37,5 +39,20 @@ public class RankPanel extends JPanel{
 				g.drawString("" + i + ".", (SCREEN_WIDTH - metrics1.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
 			}
 		}
+		//communication message
+        g.setColor(Color.green);
+        g.setFont(new Font("Ink Free", Font.BOLD, 30));
+        FontMetrics metrics3 = getFontMetrics(g.getFont());
+        g.drawString("press 'ENTER' return to 'MainMenu'", (SCREEN_WIDTH - metrics3.stringWidth("press 'ENTER' return to 'MainMenu'"))/2, SCREEN_HEIGHT-50);
+	}
+	
+	public class MyKeyListener extends KeyAdapter{
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+				controller.restartGame();
+			}
+		}	
 	}
 }
+

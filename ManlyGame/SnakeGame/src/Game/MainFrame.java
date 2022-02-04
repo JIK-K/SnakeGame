@@ -14,7 +14,6 @@ public class MainFrame extends JFrame{
 		this.getRootPane().setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		this.add(new GamePanel());
 		controller = new ViewController(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

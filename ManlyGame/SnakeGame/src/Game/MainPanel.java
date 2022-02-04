@@ -33,21 +33,30 @@ public class MainPanel extends JPanel{
         g.drawString("Snake Game", (SCREEN_WIDTH - metrics1.stringWidth("Snake Game"))/2, SCREEN_HEIGHT/5);
         
         //Start Text
-        g.setColor(Color.red);
+        g.setColor(Color.green);
         g.setFont(new Font("Ink Free", Font.BOLD, 30));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
-        g.drawString("press 'ENTER' to Start", (SCREEN_WIDTH - metrics2.stringWidth("press 'ENTER' to Start"))/2, SCREEN_HEIGHT-200);
-    }
-    
-    public void changeGamePanel() {
-    	controller.showGamePanel();
+        g.drawString("press 'Number' to Start", (SCREEN_WIDTH - metrics2.stringWidth("press 'Number' to Start"))/2, SCREEN_HEIGHT-50);
+        
+        //select Action
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 30));
+        FontMetrics metrics3 = getFontMetrics(g.getFont());
+        g.drawString("1. Start Game", (SCREEN_WIDTH - metrics3.stringWidth("1. Start Game"))/2, SCREEN_HEIGHT-250);
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 30));
+        FontMetrics metrics4 = getFontMetrics(g.getFont());
+        g.drawString("2. View Rank", (SCREEN_WIDTH - metrics4.stringWidth("2. View Rank"))/2, SCREEN_HEIGHT-200);
     }
     
 	public class MyKeyListener extends KeyAdapter{
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-				changeGamePanel();
+			switch(e.getKeyCode()) {
+			case KeyEvent.VK_1:
+				controller.showGamePanel();
+			case KeyEvent.VK_2:
+				controller.change();
 			}
 		}
 	}
