@@ -14,7 +14,7 @@ public class GamePanel extends JPanel implements ActionListener{
     final int x[] = new int[GAME_UNITS];
     final int y[] = new int[GAME_UNITS];
     int bodyParts = 5;
-    int applesEaten;
+    public int applesEaten = 0;
     int appleX;
     int appleY;
     char direction = 'R';
@@ -23,7 +23,8 @@ public class GamePanel extends JPanel implements ActionListener{
     Timer timer;
     Random random;
     ViewController controller;
-           
+    int startCount = 0;
+    
     public GamePanel(ViewController controller){
     	this.controller = controller;
         random = new Random();
@@ -77,6 +78,7 @@ public class GamePanel extends JPanel implements ActionListener{
             g.drawString("Score : "+applesEaten, (SCREEN_WIDTH - metrics.stringWidth("Score :"+applesEaten))/2, g.getFont().getSize());
         }
         else if(!start){
+        	controller.saveScore();
             gameOver(g);
         }
     }
@@ -166,8 +168,13 @@ public class GamePanel extends JPanel implements ActionListener{
         g.setFont(new Font("Ink Free", Font.BOLD, 30));
         FontMetrics metrics3 = getFontMetrics(g.getFont());
         g.drawString("press 'ENTER' to view Rank", (SCREEN_WIDTH - metrics3.stringWidth("press 'ENTER' to view Rank"))/2, SCREEN_HEIGHT-50);
+        
+        if(applesEaten != 0) {
+        	controller.showFrame();
+        }
     }
     
+    //=================Override==================//
     @Override
     public void actionPerformed(ActionEvent e) {
         if(running){

@@ -1,8 +1,9 @@
 package Game;
-//�ߵǾ�°�?
+//�ߵǾ�°�?
 public class ManlyGame {
 	public static void main(String[] arg) {
 		new MainFrame();
-		new ClientSocket();
+		//new ClientSocket();
+		//new ScoreFrame();
 	}
 }

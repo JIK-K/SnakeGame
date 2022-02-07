@@ -6,6 +6,8 @@ public class ViewController {
 	GamePanel gamePanel; 
 	RankPanel rankPanel;
 	Container contentPane;
+	int userScore;
+	
 	public ViewController(MainFrame gameFrame) {
 		this.gameFrame = gameFrame;
 		init();
@@ -21,6 +23,7 @@ public class ViewController {
 	}
 	public void restartGame() {
 		mainPanel = new MainPanel(this);
+		
 		contentPane.removeAll();
 		contentPane.add(mainPanel);
 		gameFrame.setVisible(false);
@@ -29,6 +32,7 @@ public class ViewController {
 	
 	public void showGamePanel() {
 		gamePanel = new GamePanel(this);
+		
 		contentPane.remove(mainPanel);
 		contentPane.add(gamePanel);
 		gameFrame.setVisible(false);
@@ -37,6 +41,7 @@ public class ViewController {
 	
 	public void showRankPanel() {
 		rankPanel = new RankPanel(this);
+		
 		contentPane.remove(gamePanel);
 //		contentPane.removeAll();
 		contentPane.add(rankPanel);
@@ -46,9 +51,18 @@ public class ViewController {
 	
 	public void change() {
 		rankPanel = new RankPanel(this);
+		
 		contentPane.remove(mainPanel);
 		contentPane.add(rankPanel);
 		gameFrame.setVisible(false);
 		gameFrame.setVisible(true);
+	}
+	
+	//메서드이름정리 및 정리정
+	public void saveScore() {
+		userScore = gamePanel.applesEaten;
+	}
+	public void showFrame() {
+		new ScoreFrame(this);
 	}
 }
