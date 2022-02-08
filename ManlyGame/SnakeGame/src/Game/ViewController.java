@@ -1,12 +1,18 @@
 package Game;
 import java.awt.*;
+
+import Frame.MainFrame;
+import Frame.ScoreFrame;
+import Panel.GamePanel;
+import Panel.MainPanel;
+import Panel.RankPanel;
 public class ViewController {
 	MainFrame gameFrame; 
 	MainPanel mainPanel; 
 	GamePanel gamePanel; 
 	RankPanel rankPanel;
 	Container contentPane;
-	int userScore;
+	public int userScore;
 	
 	public ViewController(MainFrame gameFrame) {
 		this.gameFrame = gameFrame;
@@ -58,7 +64,6 @@ public class ViewController {
 		gameFrame.setVisible(true);
 	}
 	
-	//메서드이름정리 및 정리정
 	public void saveScore() {
 		userScore = gamePanel.applesEaten;
 	}
