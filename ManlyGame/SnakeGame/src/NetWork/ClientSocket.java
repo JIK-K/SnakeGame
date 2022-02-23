@@ -21,7 +21,8 @@ public class ClientSocket {
 	
 	private void setUpNetworking() {
 		try {
-			socket = new Socket("211.199.81.93", 4242);
+			socket = new Socket("127.0.0.1", 4242);
+//			socket = new Socket("211.199.81.93", 4242);
 			InputStreamReader streamReader = new InputStreamReader(socket.getInputStream());
 			reader = new BufferedReader(streamReader);
 			writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -46,7 +47,7 @@ public class ClientSocket {
 			String message;
 			try {
 				while((message = reader.readLine()) != null) {
-					System.out.println("message from server" + message);
+					System.out.println("서버로 부터 온 메세지...  " + message);
 				}
 			}catch(Exception ex) {
 				ex.printStackTrace();
