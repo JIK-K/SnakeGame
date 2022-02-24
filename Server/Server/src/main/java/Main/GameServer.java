@@ -11,6 +11,7 @@ package Main;
 public class GameServer {
     public static void main(String[] args){
         //SocketManager sk = new SocketManager();
-        new DBManager();
+        DBManager dm = new DBManager();
+        dm.connectDB();
     }
 }

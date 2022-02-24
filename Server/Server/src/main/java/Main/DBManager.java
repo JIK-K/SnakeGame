@@ -10,54 +10,24 @@ import java.sql.*;
  * @author JIK
  */
 public class DBManager {
-//    private final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-//    private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    
-//    private final String DB_URL = "jdbc:mariadb://211.199.81.93::3306/mydatabase";
-    private final String DB_URL = "jdbc:mysql://localhost/mydatabase?useSSL=false";
-    private final String USER_NAME = "root";
-    private final String PASSWORD = "kdkd4813";
-    
-    public DBManager(){
-        Connection conn = null;
-        Statement state = null;
+    private static final String DB_DRIVER_CLASS = "org.mariadb.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mariadb://211.199.81.93:3306/mydatabase";
+    private static final String DB_USERNAME = "kddnswlr";
+    private static final String DB_PASSWORD = "kdkd4813";
+    private static Connection conn;
+    PreparedStatement pstmt = null;
+
+    public void connectDB(){
         try{
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
-            System.out.println("[ MySQL Connection ] \n");
-            state = conn.createStatement();
             
-            String sql;
-//            sql = "SELECT * FROM rank";
-            sql = "SELECT * FROM gamerank";
-            ResultSet rs = state.executeQuery(sql);
+            Class.forName(DB_DRIVER_CLASS);
+            conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            System.out.println("Connect Success");
             
-            while(rs.next()){
-                String user_name = rs.getString("user_name");
-                String user_score = rs.getString("user_score");
-                System.out.println("Name: "+ user_name);
-                System.out.println("Score:"+ user_score);
-                System.out.println("================\n");
-            }
-            rs.close();
-            state.close();
-            conn.close();
-        }catch(Exception e){
-        }finally{
-            try{
-                if(state != null)
-                    state.close();
-            }catch(SQLException ex1){
-                
-            }
-            
-            try{
-                if(conn != null)
-                    conn.close();
-            }catch(SQLException ex1){
-                
-            }
+        }catch(ClassNotFoundException e){
+            System.out.println("System File loading Fail");
+        }catch(SQLException e){
+            System.out.println("DBconnect Fail");
         }
     }
 }
