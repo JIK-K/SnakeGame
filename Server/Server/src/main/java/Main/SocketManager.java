@@ -104,4 +104,12 @@ public class SocketManager extends Thread{
             e.printStackTrace();
         }
     }
+    
+    //=============================================================//
+    private static class SingleTonHolder{
+		private static final SocketManager instance = new SocketManager();
+	}
+    public static SocketManager getInstance() {
+            return SingleTonHolder.instance;
+    }
 }

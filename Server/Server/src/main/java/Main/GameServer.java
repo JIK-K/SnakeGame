@@ -4,14 +4,16 @@
  */
 package Main;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author JIK
  */
 public class GameServer {
-    public static void main(String[] args){
-        //SocketManager sk = new SocketManager();
+    public static void main(String[] args) throws SQLException{
         DBManager dm = new DBManager();
-        dm.connectDB();
+//        dm.DBConnect();
+        SocketManager sk = new SocketManager();
     }
 }
