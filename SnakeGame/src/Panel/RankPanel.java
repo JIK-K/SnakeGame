@@ -4,8 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Game.ViewController;
-import Network.DBManager;
+import javaapplication7.ViewController;
+import javaapplication7.DBManager;
 import java.util.ArrayList;
 
 
@@ -33,21 +33,34 @@ public class RankPanel extends JPanel{
     }
 
     public void draw(Graphics g) {
+//        for(int i = 1 ; i <= 5; i++) {
+//            if(i == 1) {
+//                g.setColor(Color.orange);
+//                g.setFont(new Font("Gothic", Font.BOLD, 50));
+//                FontMetrics metrics1 = getFontMetrics(g.getFont());
+//                g.drawString("" + i +".  " + dm.username.get(0) + " ➛ " + dm.userscore.get(0) , (SCREEN_WIDTH - metrics1.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
+//            }
+//            else {
+//                g.setColor(Color.red);
+//                g.setFont(new Font("Gothic", Font.BOLD, 30));
+//                FontMetrics metrics2 = getFontMetrics(g.getFont());
+//                g.drawString("" + i + ".  " + dm.username.get(i-1) + " ➛ " + dm.userscore.get(i-1), (SCREEN_WIDTH - metrics2.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
+//            }
+//        }
         for(int i = 1 ; i <= 5; i++) {
             if(i == 1) {
                 g.setColor(Color.orange);
                 g.setFont(new Font("Gothic", Font.BOLD, 50));
                 FontMetrics metrics1 = getFontMetrics(g.getFont());
-                g.drawString("" + i +".  " + dm.username.get(0) + " ➛ " + dm.userscore.get(0) , (SCREEN_WIDTH - metrics1.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
+                g.drawString("" + i +".  ", (SCREEN_WIDTH - metrics1.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
             }
             else {
                 g.setColor(Color.red);
                 g.setFont(new Font("Gothic", Font.BOLD, 30));
                 FontMetrics metrics2 = getFontMetrics(g.getFont());
-                g.drawString("" + i + ".  " + dm.username.get(i-1) + " ➛ " + dm.userscore.get(i-1), (SCREEN_WIDTH - metrics2.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
+                g.drawString("" + i + ".  ", (SCREEN_WIDTH - metrics2.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
             }
-        }
-                
+        }        
         //communication message
         g.setColor(Color.green);
         g.setFont(new Font("Ink Free", Font.BOLD, 30));

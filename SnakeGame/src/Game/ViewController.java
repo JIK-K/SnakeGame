@@ -1,11 +1,11 @@
 package Game;
 import java.awt.*;
 
-import Frame.MainFrame;
-import Frame.ScoreFrame;
-import Panel.GamePanel;
-import Panel.MainPanel;
-import Panel.RankPanel;
+import javaapplication7.MainFrame;
+import javaapplication7.ScoreFrame;
+import javaapplication7.GamePanel;
+import javaapplication7.MainPanel;
+import javaapplication7.RankPanel;
 public class ViewController {
 	MainFrame gameFrame; 
 	MainPanel mainPanel; 

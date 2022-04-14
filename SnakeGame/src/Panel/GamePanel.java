@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Game.ViewController;
+import javaapplication7.ViewController;
 
 import java.util.Random;
 
@@ -71,8 +71,8 @@ public class GamePanel extends JPanel implements ActionListener{
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
                 else{
-//                    g.setColor(new Color(45, 180, 0)); //basic color
-                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //holymoly color
+                    g.setColor(new Color(45, 180, 0)); //basic color
+//                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //holymoly color
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
@@ -82,7 +82,7 @@ public class GamePanel extends JPanel implements ActionListener{
             g.drawString("Score : "+applesEaten, (SCREEN_WIDTH - metrics.stringWidth("Score :"+applesEaten))/2, g.getFont().getSize());
         }
         else if(!start){
-        	controller.saveScore();
+            controller.saveScore();
             gameOver(g);
         }
     }

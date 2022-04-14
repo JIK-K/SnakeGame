@@ -1,13 +1,12 @@
 package Game;
 
-import Frame.MainFrame;
-import NetWork.ClientSocket;
-import Network.DBManager;
+import javaapplication7.MainFrame;
+import javaapplication7.DBManager;
 
 public class ManlyGame {
 	public static void main(String[] arg) {
             MainFrame mainFrame = new MainFrame();
-            ClientSocket clientSocket = new ClientSocket();
+            
             DBManager DBManager = new DBManager(); /*dbManager*/
 	}
 }

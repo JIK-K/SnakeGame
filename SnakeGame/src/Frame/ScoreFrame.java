@@ -3,9 +3,8 @@ package Frame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import Game.ViewController;
-import NetWork.ClientSocket;
-import Network.DBManager;
+import javaapplication7.ViewController;
+import javaapplication7.DBManager;
 
 
 public class ScoreFrame extends JFrame implements ActionListener{
@@ -17,11 +16,12 @@ public class ScoreFrame extends JFrame implements ActionListener{
 	Container contentPane;
 	JButton button;
 	ViewController controller;
-	ClientSocket cs = ClientSocket.getInstance();
 	DBManager dm = DBManager.getInstance();
         
-	String userName;
-	String data;
+	public String userName;
+	public String data;
+        public int userscore;
+        
 	public ScoreFrame(ViewController controller) {
 		this.controller = controller;
 		this.setTitle("SCORE");
@@ -36,7 +36,7 @@ public class ScoreFrame extends JFrame implements ActionListener{
 	}
 	
 	public void makeData() {
-		data = userName + "#" + controller.userScore;
+            data = userName + "#" + controller.userScore;
 	}
 	
 	public void init() {
@@ -45,6 +45,8 @@ public class ScoreFrame extends JFrame implements ActionListener{
 		score = new JLabel("Your Score      =>  =>  =>       " + controller.userScore); // AppleEaten
 		button = new JButton("SEND");
 		
+                userscore = controller.userScore;
+                
 		contentPane = getContentPane();
 		contentPane.setLayout(new FlowLayout());
 		contentPane.add(name);
@@ -59,10 +61,10 @@ public class ScoreFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==button) {
 			userName = inputName.getText();
-			System.out.println(userName);
-			makeData();
-			cs.sendData(data);
-                        dm.DBInsert();
+                        makeData();
+			System.out.println(userName + "" + userscore);
+                        System.out.println(data);
+                        dm.DBInsert(data);
 			dispose();
 		}
 	}

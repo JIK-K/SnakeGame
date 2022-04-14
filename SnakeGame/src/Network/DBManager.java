@@ -4,7 +4,6 @@
  */
 package Network;
 
-import NetWork.ClientSocket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,12 +23,11 @@ public class DBManager {
     ResultSet rs = null;
     String sql = "SELECT * FROM rank";
     
-    ClientSocket cs = ClientSocket.getInstance();
     public ArrayList<String> username = new ArrayList<String>();
     public ArrayList<String> userscore = new ArrayList<String>();
     
-    public void DBInsert(){
-        String data = cs.returnData();
+    public void DBInsert(String userdata){
+        String data = userdata;
         String ary[] = data.split("#");
         String name = ary[0];
         String score = ary[1];

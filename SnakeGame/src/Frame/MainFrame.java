@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.JFrame;
 
-import Game.ViewController;
+import javaapplication7.ViewController;
 
 public class MainFrame extends JFrame{
 	static final int SCREEN_WIDTH = 600;
