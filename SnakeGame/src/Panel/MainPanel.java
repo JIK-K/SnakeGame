@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import javaapplication7.ViewController;
+import Game.ViewController;
 
 import java.util.Random;
 

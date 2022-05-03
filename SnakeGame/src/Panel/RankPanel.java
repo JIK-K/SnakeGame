@@ -4,8 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import javaapplication7.ViewController;
-import javaapplication7.DBManager;
+import Game.ViewController;
+import Network.DBManager;
 import java.util.ArrayList;
 
 

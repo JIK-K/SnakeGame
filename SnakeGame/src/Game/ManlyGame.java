@@ -1,7 +1,7 @@
 package Game;
 
-import javaapplication7.MainFrame;
-import javaapplication7.DBManager;
+import Frame.MainFrame;
+import Network.DBManager;
 
 public class ManlyGame {
 	public static void main(String[] arg) {
