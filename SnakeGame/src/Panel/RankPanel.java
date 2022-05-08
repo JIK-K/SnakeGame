@@ -4,14 +4,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Game.ViewController;
+import Controller.ViewController;
 import Network.DBManager;
 import java.util.ArrayList;
 
 
 public class RankPanel extends JPanel{
-    static final int SCREEN_WIDTH = 600;
-    static final int SCREEN_HEIGHT = 600;
+    static final int SCREEN_WIDTH = 1000;
+    static final int SCREEN_HEIGHT = 1000;
     ViewController controller;
     DBManager dm = DBManager.getInstance();
     
@@ -52,13 +52,13 @@ public class RankPanel extends JPanel{
                 g.setColor(Color.orange);
                 g.setFont(new Font("Gothic", Font.BOLD, 50));
                 FontMetrics metrics1 = getFontMetrics(g.getFont());
-                g.drawString("" + i +".  ", (SCREEN_WIDTH - metrics1.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
+                g.drawString("" + i +".  " + dm.username.get(i-1) + "   " + dm.userscore.get(i-1), (SCREEN_WIDTH - metrics1.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
             }
             else {
                 g.setColor(Color.red);
                 g.setFont(new Font("Gothic", Font.BOLD, 30));
                 FontMetrics metrics2 = getFontMetrics(g.getFont());
-                g.drawString("" + i + ".  ", (SCREEN_WIDTH - metrics2.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
+                g.drawString("" + i + ".  " + dm.username.get(i-1) + "   " + dm.userscore.get(i-1), (SCREEN_WIDTH - metrics2.stringWidth("1"))/6, SCREEN_HEIGHT/7*i);
             }
         }        
         //communication message

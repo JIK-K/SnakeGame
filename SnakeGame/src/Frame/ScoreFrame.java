@@ -3,7 +3,7 @@ package Frame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import Game.ViewController;
+import Controller.ViewController;
 import Network.DBManager;
 
 
@@ -24,7 +24,7 @@ public class ScoreFrame extends JFrame implements ActionListener{
         
 	public ScoreFrame(ViewController controller) {
 		this.controller = controller;
-		this.setTitle("SCORE");
+		this.setTitle("♥");
 		this.setVisible(true);
 		this.getRootPane().setPreferredSize(new Dimension(SCREEN_WIDTH, SCRREN_HEIGHT));
 		this.pack();

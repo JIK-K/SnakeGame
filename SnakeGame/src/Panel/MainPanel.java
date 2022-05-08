@@ -4,13 +4,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Game.ViewController;
+import Controller.ViewController;
 
 import java.util.Random;
 
 public class MainPanel extends JPanel{
-	static final int SCREEN_WIDTH = 600;
-    static final int SCREEN_HEIGHT = 600;
+	static final int SCREEN_WIDTH = 1000;
+    static final int SCREEN_HEIGHT = 1000;
     Random random;
     ViewController controller;
     public MainPanel(ViewController controller){

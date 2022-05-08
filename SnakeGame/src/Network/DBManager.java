@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class DBManager {
     private static final String DB_DRIVER_CLASS = "org.mariadb.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mariadb://211.199.81.93:3306/mydatabase";
+    private static final String DB_URL = "jdbc:mariadb://210.123.142.101:3306/mydatabase";
     private static final String DB_USERNAME = "kddnswlr";
     private static final String DB_PASSWORD = "kdkd4813";
     ResultSet rs = null;
