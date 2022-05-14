@@ -29,13 +29,11 @@ public class ViewController {
         contentPane = gameFrame.getContentPane();
         contentPane.add(mainPanel);
         mainPanel.requestFocus();
-        musicController.backgroundMusic();
+//        musicController.backgroundMusic();
     }
     
     //MainPanel Repaint
     public void restartGame() {
-        musicController.backgroundMusic();
-        
         mainPanel = new MainPanel(this);
 
         contentPane.removeAll();
@@ -47,18 +45,18 @@ public class ViewController {
 
     //MainPanel -> GamePanel
     public void showGamePanel(){
+        musicController.backgroundMusic();
         gamePanel = new GamePanel(this);
         
         contentPane.remove(mainPanel);
         contentPane.add(gamePanel);
         gameFrame.setVisible(false);
         gameFrame.setVisible(true);
-        
-        musicController.stopMusic();
     }
 
     //GamePanel -> RankPanel
     public void showRankPanel() {
+        musicController.stopMusic();
         rankPanel = new RankPanel(this);
 
         contentPane.remove(gamePanel);
@@ -77,7 +75,7 @@ public class ViewController {
         gameFrame.setVisible(false);
         gameFrame.setVisible(true);
         
-        musicController.stopMusic();
+//        musicController.stopMusic();
     }
 
     public void saveScore() {

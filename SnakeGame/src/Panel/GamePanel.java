@@ -27,7 +27,6 @@ public class GamePanel extends JPanel implements ActionListener{
     Random random;
     ViewController controller;
     MusicController musicController;
-    int startCount = 0;
     
     public GamePanel(ViewController controller){
         musicController = MusicController.getInstance();
@@ -65,9 +64,27 @@ public class GamePanel extends JPanel implements ActionListener{
 //                g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
 //                g.drawLine(0, i*UNIT_SIZE, SCREEN_HEIGHT, i*UNIT_SIZE);
 //            }
-            g.setColor(Color.red);
-            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
-
+            if(applesEaten == 15){
+                g.setColor(Color.orange);
+                g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+            }
+            else if(applesEaten == 30){
+                g.setColor(Color.yellow);
+                g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+            }
+            else if(applesEaten == 50){
+                g.setColor(Color.blue);
+                g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+            }
+            else if(applesEaten == 100){
+                g.setColor(Color.white);
+                g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+            }
+            else{
+                g.setColor(Color.red);
+                g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+            }
+            
             for(int i = 0; i < bodyParts; i++){
                 if(i == 0){
                     g.setColor(Color.green);
@@ -75,7 +92,8 @@ public class GamePanel extends JPanel implements ActionListener{
                 }
                 else{
                     g.setColor(new Color(45, 180, 0)); //basic color
-//                    g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //holymoly color
+                    if(applesEaten >= 100)
+                        g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); //holymoly color
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
@@ -119,13 +137,44 @@ public class GamePanel extends JPanel implements ActionListener{
     
     public void checkApple(){
         if((x[0] == appleX) && (y[0] == appleY)){
-            bodyParts++;
-            applesEaten++;
-            musicController.eatAppleMusic();
-            newApple();
+            if(applesEaten == 15){
+                int percent = random.nextInt(10);
+                if(percent > 5)
+                    bodyParts = (bodyParts/2);
+                else
+                    bodyParts = (bodyParts*2);
+                applesEaten++;
+                musicController.eatAppleMusic();
+                newApple();
+            }
+            else if(applesEaten == 30){
+                int percent = random.nextInt(10);
+                if(percent < 5)
+                    applesEaten = (applesEaten*2);
+                else
+                    applesEaten = (applesEaten/2);
+                bodyParts++;
+                musicController.eatAppleMusic();
+                newApple();
+            }
+            else if(applesEaten == 50){
+                int percent = random.nextInt(10);
+                if(percent > 5)
+                    bodyParts = (bodyParts/2);
+                else
+                    bodyParts = (bodyParts*2);
+                applesEaten++;
+                musicController.eatAppleMusic();
+                newApple();
+            }
+            else{
+                bodyParts++;
+                applesEaten++;
+                musicController.eatAppleMusic();
+                newApple();
+            }
         }
     }
-    
     public void checkCollisions(){
         //checks if head collides with body
         for(int i = bodyParts; i > 0; i--){
@@ -136,22 +185,22 @@ public class GamePanel extends JPanel implements ActionListener{
         }
         //check if head touches left boreder
         if(x[0] < 0){
-        	start = false;
+            start = false;
             running = false;
         }
         //check if head touches right boreder
         if(x[0] >= SCREEN_WIDTH){
-        	start = false;
+            start = false;
             running = false;
         }
         //check if head touches top boreder
         if(y[0] < 0){
-        	start = false;
+            start = false;
             running = false;
         }
         //check if head touches bottom boreder
         if(y[0] >= SCREEN_HEIGHT){
-        	start = false;
+            start = false;
             running = false;
         }
         
