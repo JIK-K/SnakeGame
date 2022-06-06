@@ -50,6 +50,10 @@ public class MainPanel extends JPanel{
         g.setFont(new Font("Ink Free", Font.BOLD, 30));
         FontMetrics metrics4 = getFontMetrics(g.getFont());
         g.drawString("2. View Rank", (SCREEN_WIDTH - metrics4.stringWidth("2. View Rank"))/2, SCREEN_HEIGHT-200);
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 30));
+        FontMetrics metrics5 = getFontMetrics(g.getFont());
+        g.drawString("3. How to Play", (SCREEN_WIDTH - metrics5.stringWidth("3. How to Play"))/2, SCREEN_HEIGHT-150);
     }
     
 	public class MyKeyListener extends KeyAdapter{
@@ -60,6 +64,8 @@ public class MainPanel extends JPanel{
 				controller.showGamePanel();
 			case KeyEvent.VK_2:
 				controller.change();
+                        case KeyEvent.VK_3:
+                            controller.showHelpPanel();
 			}
 		}
 	}

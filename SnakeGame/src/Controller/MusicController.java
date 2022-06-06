@@ -23,7 +23,7 @@ public class MusicController{
     public void backgroundMusic(){
         if(condition){
             try{
-                file = new File("Titanic.wav");
+                file = new File("BGM/Titanic.wav");
                 audioStream = AudioSystem.getAudioInputStream(file);
                 clip = AudioSystem.getClip();
                 clip.open(audioStream);
@@ -37,7 +37,7 @@ public class MusicController{
     public void eatAppleMusic(){
         if(condition){
             try{
-                file = new File("eatApple.wav");
+                file = new File("BGM/eatApple.wav");
                 audioStream = AudioSystem.getAudioInputStream(file);
                 clip = AudioSystem.getClip();
                 clip.open(audioStream);

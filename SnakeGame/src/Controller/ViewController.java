@@ -3,14 +3,13 @@ import java.awt.*;
 
 import Frame.MainFrame;
 import Frame.ScoreFrame;
-import Panel.GamePanel;
-import Panel.MainPanel;
-import Panel.RankPanel;
+import Panel.*;
 public class ViewController {
     MainFrame gameFrame; 
     MainPanel mainPanel; 
     GamePanel gamePanel; 
     RankPanel rankPanel;
+    HelpPanel helpPanel;
     MusicController musicController;
     Container contentPane;
     public int userScore;
@@ -76,6 +75,14 @@ public class ViewController {
         gameFrame.setVisible(true);
         
 //        musicController.stopMusic();
+    }
+    public void showHelpPanel(){
+        helpPanel = new HelpPanel(this);
+        
+        contentPane.remove(mainPanel);
+        contentPane.add(helpPanel);
+        gameFrame.setVisible(false);
+        gameFrame.setVisible(true);
     }
 
     public void saveScore() {
