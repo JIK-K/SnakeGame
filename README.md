@@ -27,7 +27,7 @@
 
 ### View Rank
 
-![game5](img/%EB%9E%AD%ED%82%B9%EB%93%B1%EB%A1%9D.png)
+![game5](img/%EB%9E%AD%ED%82%B9%ED%99%94%EB%A9%B4.png)
 
 ### How To Play
 
