@@ -17,9 +17,9 @@ import java.util.ArrayList;
  */
 public class DBManager {
     private static final String DB_DRIVER_CLASS = "org.mariadb.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mariadb://210.123.142.101:3306/mydatabase";
-    private static final String DB_USERNAME = "kddnswlr";
-    private static final String DB_PASSWORD = "kdkd4813";
+    private static final String DB_URL = "jdbc:mariadb://210.210.210.210:3306/mydatabase";
+    private static final String DB_USERNAME = "***";
+    private static final String DB_PASSWORD = "***";
     ResultSet rs = null;
     String sql = "SELECT * FROM rank";
     
